@@ -1,1 +1,2 @@
-*.mat
+# ignore DREAMER.mat because it's too big
+DREAMER.mat
