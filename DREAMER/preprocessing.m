@@ -14,7 +14,7 @@ freqRanges = [
 ];
 
 % compute all features and store in .mat file
-features_score = zeros(DREAMER.noOfSubjects*DREAMER.noOfVideoSequences, 71);
+features_score = zeros(DREAMER.noOfSubjects*DREAMER.noOfVideoSequences, 73);
 
 for i = 1:DREAMER.noOfSubjects
     for j = 1:DREAMER.noOfVideoSequences
@@ -39,11 +39,13 @@ disp(features_score)
 
 % save arousal score at the end column for testing
 for i = 1:DREAMER.noOfSubjects
-    score = DREAMER.Data{i}.ScoreValence;
-    % score = DREAMER.Data{i}.ScoreArousal;
-    % score = DREAMER.Data{i}.ScoreDominance;
+    scoreValence = DREAMER.Data{i}.ScoreValence;
+    scoreArousal = DREAMER.Data{i}.ScoreArousal;
+    scoreDominance = DREAMER.Data{i}.ScoreDominance;
     for j = 1:DREAMER.noOfVideoSequences
-        features_score((i-1)*DREAMER.noOfVideoSequences+j, 71) = score(j);
+        features_score((i-1)*DREAMER.noOfVideoSequences+j, 71) = scoreValence(j);
+        features_score((i-1)*DREAMER.noOfVideoSequences+j, 72) = scoreArousal(j);
+        features_score((i-1)*DREAMER.noOfVideoSequences+j, 73) = scoreDominance(j);
     end
 end
 
